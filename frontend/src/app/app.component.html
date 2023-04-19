@@ -1,0 +1,47 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+      <!--Toggle button when screen collapses-->
+      <button
+          class="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+      >
+          <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <!--Website icon/homepage/trending-->
+          <a class="navbar-brand" href="/trending">
+              <img src="../assets/img/movie-icon.png" width="30" height="30"/>
+          </a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!--Trending-->
+              <li class="nav-item">
+                  <a class="nav-link active" href="/trending">Trending</a>
+              </li>
+              <!--Popular-->
+              <li class="nav-item">
+                  <a class="nav-link active" href="/popular">Popular</a>
+              </li>
+              <!--Top Rated-->
+              <li class="nav-item">
+                  <a class="nav-link active" href="/topRated">Top Rated</a>
+              </li>
+          </ul>
+          <!--Search Function-->
+          <form action="search" method="get" class="d-flex form-control-sm" role="search">
+              <input class="form-control me-2" type="text" name="query" placeholder="Search" size="25" aria-label="Search" required/>
+              <button class="btn btn-outline-light" type="submit" data-mdb-ripple-color="dark"><i class="fas fa-search"></i></button>
+          </form>
+          <form action="#" th:action="@{/index}" method="post" class="d-flex form-control-sm">
+              <button class="btn btn-outline-light" type="submit" data-mdb-ripple-color="dark" id="button-addon2">Logout</button>
+          </form>
+      </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,9 @@
+:root{
+    --primary-color:#696969;
+    --secondary-color: #808080;
+}
+
+body{
+    background: url('../img/login-background.png') fixed;
+    font-family: 'Poppins', sans-serif;
+}

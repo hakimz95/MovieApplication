@@ -1,0 +1,25 @@
+<div class="container" style="padding-top: 25px;" *ngFor="let s of search">
+    <h2 style="color:#000"> Results for {{ s.queryString}}</h2>
+
+    <!--Cards Display-->
+    <div class="row row-cols-1 row-cols-md-5 g-20">
+        <div class="card">
+            <a class="nav-link active" th:href="@{/detail/{id}(id=${i.id})}">
+                <img class="card-img-top" src="{{ s.posterPath }}">
+                <div class="card-body">
+                    <div class="movie-info">
+                        <h5 class="card-title">{{ s.title }}</h5>
+                        <span class={{s.ratingColour}}>{{ s.rating }}</span>
+                    </div>
+                    <div class="movie-overview">
+                        <p class="h5" style="font-weight: bold;">Overview</p>
+                        <p class="card-text">{{ s.overview }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<span>test</span>
+
