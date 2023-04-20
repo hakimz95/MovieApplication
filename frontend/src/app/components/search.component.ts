@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-search',
@@ -8,21 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  search!: any[]
+  movie: any = []
 
   constructor(
-    private httpClient: HttpClient
+    private movieSvc: MovieService
   ) {}
 
   ngOnInit(): void {
-      
+      this.movieSvc.getSearch()
+      this.searchMovie()
   }
 
-  getSearch() {
-    this.httpClient.get<any>('http://localhost:8080/api/search/').subscribe(
+  searchMovie() {
+    this.movieSvc.getSearch().subscribe(
       response => {
         console.log(response)
-        this.search = response
+        this.movie = response
       }
     )
   }

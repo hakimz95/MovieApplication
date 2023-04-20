@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-popular',
@@ -8,22 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopularComponent implements OnInit{
 
-  popular!: any[]
+  movie: any = []
 
   constructor(
-    private httpClient: HttpClient
+    private movieSvc: MovieService
   ) {}
 
   ngOnInit(): void {
-      this.getPopular()
+    this.movieSvc.getPopular()
+    this.popularMovie()
   }
 
-  getPopular() {
-    this.httpClient.get<any>('http://localhost:8080/api/popular').subscribe(
+  popularMovie() {
+    this.movieSvc.getPopular().subscribe(
       response => {
         console.log(response)
-        this.popular = response
+        this.movie = response
       }
     )
   }
+
+  
 }

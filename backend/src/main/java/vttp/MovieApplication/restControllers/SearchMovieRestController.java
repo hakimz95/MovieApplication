@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import vttp.MovieApplication.models.Movies;
 import vttp.MovieApplication.services.MovieService;
 
+@CrossOrigin
 @RestController
 public class SearchMovieRestController {
 
     @Autowired
     private MovieService movieService;
 
-    @CrossOrigin
     @GetMapping("/api/search")
     public List<Movies> searchMovieAPI(Model model,@RequestParam(required = true) String query) {
         String queryString = query;

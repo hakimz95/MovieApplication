@@ -7,17 +7,12 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
-
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
 public class Movies implements Serializable {
-
-    //private static final Logger logger = LoggerFactory.getLogger(Movies.class);
 
     private String id;
     private String title;

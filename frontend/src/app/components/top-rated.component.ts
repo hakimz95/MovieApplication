@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-top-rated',
@@ -8,21 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopRatedComponent implements OnInit{
 
-  topRated!: any[]
+  movie: any = []
 
   constructor(
-    private httpClient: HttpClient
+    private movieSvc: MovieService
   ) {}
 
   ngOnInit(): void {
-      this.getTopRated()
+    this.movieSvc.getTopRated()
+    this.topRatedMovie()
   }
 
-  getTopRated() {
-    this.httpClient.get<any>('http://localhost:8080/api/topRated').subscribe(
+  topRatedMovie() {
+    this.movieSvc.getTopRated().subscribe(
       response => {
         console.log(response)
-        this.topRated = response
+        this.movie = response
       }
     )
   }

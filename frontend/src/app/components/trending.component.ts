@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-trending',
@@ -8,21 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrendingComponent implements OnInit {
 
-  trending!: any[]
+  movie: any = []
 
   constructor (
-    private httpClient: HttpClient
+    private movieSvc: MovieService
   ) {}
 
   ngOnInit(): void {
-      this.getTrending()
+      this.movieSvc.getTrending()
+      this.trendingMovie()
   }
 
-  getTrending() {
-    this.httpClient.get<any>('http://localhost:8080/api/trending').subscribe(
+  trendingMovie() {
+    this.movieSvc.getTrending().subscribe(
       response => {
         console.log(response)
-        this.trending = response
+        this.movie = response
       }
     )
   }

@@ -10,6 +10,7 @@ import { TopRatedComponent } from './components/top-rated.component';
 import { TrendingComponent } from './components/trending.component';
 import { SearchComponent } from './components/search.component';
 import { DetailComponent } from './components/detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { DetailComponent } from './components/detail.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
