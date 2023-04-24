@@ -1,8 +1,7 @@
 package vttp.MovieApplication.models;
 
-import java.util.Date;
-
-import org.springframework.jdbc.support.rowset.SqlRowSet;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
 
 public class User {
     
@@ -10,7 +9,6 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private Date dateCreated;
 
     public String getId() {
         return id;
@@ -36,28 +34,18 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", email=" + email + ", password="+ password +", dateCreated=" + dateCreated + "]";
+        return "User [id=" + id + ", username=" + username + ", email=" + email + ", password="+ password +"]";
     }
 
-    public static User createUser(SqlRowSet rs) {
-
-        User user = new User();
-        user.setId(rs.getString("id"));
-        user.setUsername(rs.getString("username"));
-        user.setEmail(rs.getString("email"));
-        user.setPassword(rs.getString("password"));
-        user.setDateCreated(rs.getDate("date_created"));
-
-        return user;
+    public JsonObject toJson() {
+        return Json.createObjectBuilder()
+            .add("id", id)
+            .add("username", username)
+            .add("email", email)
+            .build();
     }
     
     

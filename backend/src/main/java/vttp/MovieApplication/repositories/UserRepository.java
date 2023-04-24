@@ -16,7 +16,7 @@ public class UserRepository {
     private JdbcTemplate jdbcTemplate;
 
     public boolean registerUser(User user) {
-        return jdbcTemplate.update(SQL_INSERT_USER, user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getDateCreated()) > 0;
+        return jdbcTemplate.update(SQL_INSERT_USER, user.getId(), user.getUsername(), user.getEmail(), user.getPassword()) > 0;
     }
 
     public boolean checkUserCredentials(User user) {
@@ -30,7 +30,6 @@ public class UserRepository {
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
             user.setEmail(rs.getString("email"));
-            user.setDateCreated(rs.getDate("date_created"));
         }
         return user;
     }
