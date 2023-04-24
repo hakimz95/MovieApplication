@@ -11,8 +11,9 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
       >
-          <i class="fas fa-bars"></i>
+          <fa-icon [icon]="faBars"></fa-icon>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <!--Website icon/homepage/trending-->
           <a class="navbar-brand" href="/trending">
@@ -34,9 +35,14 @@
           </ul>
           <!--Search Function-->
           <form class="d-flex form-control-sm" [formGroup]="searchForm" (ngSubmit)="processSearchForm()">
-              <input class="form-control me-2" type="text" formControlName="'query'" placeholder="Search" size="25" aria-label="Search" required/>
-              <button class="btn btn-outline-light" type="submit" data-mdb-ripple-color="dark"><i class="fas fa-search"></i></button>
+              <input class="form-control me-2" type="text" formControlName="query" placeholder="Search" size="25" aria-label="Search" required/>
+              <button class="btn btn-outline-light" type="submit" data-mdb-ripple-color="dark"><fa-icon [icon]="faSearch"></fa-icon></button>
           </form>
+          <!-- Watchlist Feature -->
+          <a class="btn btn-outline-light" href="/watchlist">
+                <fa-icon [icon]="faList"></fa-icon>
+          </a>
+          <!-- Logout Feature -->
           <form action="#" th:action="@{/index}" method="post" class="d-flex form-control-sm">
               <button class="btn btn-outline-light" type="submit" data-mdb-ripple-color="dark" id="button-addon2">Logout</button>
           </form>

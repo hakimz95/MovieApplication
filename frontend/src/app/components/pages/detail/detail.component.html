@@ -1,0 +1,53 @@
+<div class="container" style="padding-top: 25px;">
+    <h2 style="color: #000">Movie Details</h2>
+
+    <!--Card Display-->
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img class="poster" src="{{movieDetail.posterPath}}" width="375" height="550">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title" style="font-weight: bold;">{{movieDetail.title}} ({{movieDetail.releaseYear}})</h4>
+                    <br>
+                    <p class="card-text">{{movieDetail.overview}}</p>
+                    <br>
+                    Genre:
+                    <span>{{movieDetail.genres}}</span>
+                    <br>
+                    Production Country:
+                    <span>{{movieDetail.countries}}</span>
+                    <br>
+                    Languages:
+                    <span>{{movieDetail.languages}}</span>
+                    <br>
+                    Release Date:
+                    <span>{{movieDetail.releaseDate}}</span>
+                    <br>
+                    Runtime:
+                    <span>{{movieDetail.runtime}} mins</span>
+                    <br>
+                    Status:
+                    <span>{{movieDetail.status}}</span>
+                    <br><br>
+                    <a href="{{movieDetail.link}}">{{movieDetail.link}}</a>
+                    <div class="card-body-bottom">
+                        <div class="row justify-content-between">
+                            <div class="col-4">
+                                <div class="movie-rating">
+                                    <span id="rating" class="{{movieDetail.ratingColour}}">{{movieDetail.rating}}</span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <form action="#" th:action="@{/detail/{id}/favourite (username=${username}, id=${movie.id})}" method="post">
+                                    <button class="btn btn-sm btn-secondary watchlist-button" type="submit" id="button-addon2">Add to Watchlist</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

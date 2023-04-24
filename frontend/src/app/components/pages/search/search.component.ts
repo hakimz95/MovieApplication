@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../../../movie.service';
 
 @Component({
   selector: 'app-search',
@@ -15,17 +15,18 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      this.movieSvc.getSearch()
-      this.searchMovie()
+      //this.movieSvc.getSearch()
+      this.movie = this.movieSvc.movie
+      // this.searchMovie()
   }
 
   searchMovie() {
-    this.movieSvc.getSearch().subscribe(
-      response => {
-        console.log(response)
-        this.movie = response
-      }
-    )
+    // this.movieSvc.getSearch().subscribe(
+    //   response => {
+    //     console.log(response)
+    //     this.movie = response
+    //   }
+    // )
   }
 
 }

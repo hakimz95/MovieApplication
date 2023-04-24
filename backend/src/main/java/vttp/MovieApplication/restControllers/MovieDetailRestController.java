@@ -1,6 +1,5 @@
 package vttp.MovieApplication.restControllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +23,7 @@ public class MovieDetailRestController {
     public Movies generateMovieDetails(Model model, @PathVariable String id) {
         
         Optional<Movies> optMovie = movieService.getMovieDetails(id);
-
         Movies movieDetails = optMovie.get();
-        List<String> movieCountryList = movieDetails.getCountries();
-        List<String> movieGenreList = movieDetails.getGenres();
-        List<String> movieLanguageList = movieDetails.getLanguages();
 
         return movieDetails;
     }

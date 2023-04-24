@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import vttp.MovieApplication.models.Movies;
 
 @Service
 public class MovieService {
+
+    private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
 
     //Get API key from environment variables in the computer system
     @Value("${TMDB_API_KEY}")
@@ -114,6 +118,7 @@ public class MovieService {
                                                     .toUriString();
                                                     
         String searchUrlUpdate = searchMovieUrl.replace("%20", " ");
+        logger.info("Search URL with query >>>" + searchMovieUrl);
         List<Movies> searchMovieList = new LinkedList<>();
 
         //Make a call to TMDB API
@@ -123,7 +128,7 @@ public class MovieService {
         try {
             resp = template.getForEntity(searchUrlUpdate, String.class);
             searchMovieList = Movies.createJsonGetMovies(resp.getBody());
-            //logger.info("resp body: " + resp.getBody());
+            //System.out.println("resp body: " + resp.getBody());
             
             return Optional.of(searchMovieList);
         } catch (Exception e) {

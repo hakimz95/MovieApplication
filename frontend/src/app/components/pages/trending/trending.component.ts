@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../../../movie.service';
 
 @Component({
   selector: 'app-trending',
@@ -22,7 +22,7 @@ export class TrendingComponent implements OnInit {
   trendingMovie() {
     this.movieSvc.getTrending().subscribe(
       response => {
-        console.log(response)
+        console.log("Trending Response >>>",response)
         this.movie = response
       }
     )

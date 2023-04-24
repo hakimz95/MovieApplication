@@ -7,12 +7,17 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
 public class Movies implements Serializable {
+
+    private static final Logger logger = LoggerFactory.getLogger(Movies.class);
 
     private String id;
     private String title;
@@ -31,38 +36,133 @@ public class Movies implements Serializable {
     private List<String> languages;
     private String addedDateTime;
 
-    public String getId() {return id;}
-    public void setId(String id) {this.id = id;}
-    public String getTitle() {return title;}
-    public void setTitle(String title) {this.title = title;}
-    public String getOverview() {return overview;}
-    public void setOverview(String overview) {this.overview = overview;}
-    public String getReleaseDate() {return releaseDate;}
-    public void setReleaseDate(String releaseDate) {this.releaseDate = releaseDate;}
-    public String getReleaseYear() {return releaseYear;}
-    public void setReleaseYear(String releaseYear) {this.releaseYear = releaseYear;}
-    public String getPosterPath() {return posterPath;}
-    public void setPosterPath(String posterPath) {this.posterPath = posterPath;}
-    public float getRating() {return rating;}
-    public void setRating(float rating) {this.rating = rating;}
-    public String getRatingColour() {return ratingColour;}
-    public void setRatingColour(String ratingColour) {this.ratingColour = ratingColour;}
-    public String getRuntime() {return runtime;}
-    public void setRuntime(String runtime) {this.runtime = runtime;}
-    public String getStatus() {return status;}
-    public void setStatus(String status) {this.status = status;}
-    public String getLink() {return link;}
-    public void setLink(String link) {this.link = link;}
-    public String getQueryString() {return queryString;}
-    public void setQueryString(String queryString) {this.queryString = queryString;}
-    public String getAddedDateTime() {return addedDateTime;}
-    public void setAddedDateTime(String addedDateTime) {this.addedDateTime = addedDateTime;}
-    public List<String> getGenres() {return genres;}
-    public void setGenres(List<String> genres) {this.genres = genres;}
-    public List<String> getCountries() {return countries;}
-    public void setCountries(List<String> countries) {this.countries = countries;}
-    public List<String> getLanguages() {return languages;}
-    public void setLanguages(List<String> languages) {this.languages = languages;}
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(String releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public String getRatingColour() {
+        return ratingColour;
+    }
+
+    public void setRatingColour(String ratingColour) {
+        this.ratingColour = ratingColour;
+    }
+
+    public String getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(String runtime) {
+        this.runtime = runtime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getQueryString() {
+        return queryString;
+    }
+
+    public void setQueryString(String queryString) {
+        this.queryString = queryString;
+    }
+
+    public String getAddedDateTime() {
+        return addedDateTime;
+    }
+
+    public void setAddedDateTime(String addedDateTime) {
+        this.addedDateTime = addedDateTime;
+    }
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
+    }
+
+    public List<String> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(List<String> countries) {
+        this.countries = countries;
+    }
+
+    public List<String> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<String> languages) {
+        this.languages = languages;
+    }
 
     @Override
     public String toString() {
@@ -85,19 +185,19 @@ public class Movies implements Serializable {
                 String imageUrl = "https://image.tmdb.org/t/p/original/";
                 
                 JsonObject jobj = ja.getJsonObject(i);
-                String id = jobj.getJsonNumber("id").toString();
+                String id = jobj.get("id").toString();
                 String title = jobj.getString("title");
                 String overview = jobj.getString("overview");
                 String releaseDate = jobj.getString("release_date");
                 String posterPath = jobj.getString("poster_path");
                 float rating = jobj.getJsonNumber("vote_average").bigDecimalValue().floatValue();
-                int scale = (int) Math.pow(10, 1);
                 String ratingColour = "";
+                int scale = (int) Math.pow(10, 1);
                 rating = (float) Math.round(rating * scale) / scale;
                 if(rating >= 7.5) {
                     ratingColour = "green";
                 } 
-                else if(rating >= 5 && rating < 7.5) {
+                else if(rating >= 5) {
                     ratingColour = "orange";
                 }
                 else {
@@ -116,8 +216,10 @@ public class Movies implements Serializable {
 
                 //Check to see if the list movies is created 
                 //System.out.println(movies);
+                logger.info(">>>>" + movies);
             }
         }
+
         return movieList;
     }
 
@@ -150,18 +252,18 @@ public class Movies implements Serializable {
                 String releaseDate = jobj.getString("release_date");
                 String posterPath = jobj.getString("poster_path");
                 float rating = jobj.getJsonNumber("vote_average").bigDecimalValue().floatValue();
-                int scale = (int) Math.pow(10, 1);
                 String ratingColour = "";
+                int scale = (int) Math.pow(10, 1);
                 rating = (float) Math.round(rating * scale) / scale;
-                    if(rating >= 7.5) {
-                        ratingColour = "green";
-                    } 
-                    else if(rating >= 5) {
-                        ratingColour = "orange";
-                    }
-                    else {
-                        ratingColour = "red";
-                    }
+                if(rating >= 7.5) {
+                    ratingColour = "green";
+                } 
+                else if(rating >= 5) {
+                    ratingColour = "orange";
+                }
+                else {
+                    ratingColour = "red";
+                }
 
                 movies.setId(id);
                 movies.setTitle(title);
@@ -176,6 +278,7 @@ public class Movies implements Serializable {
 
                 //Check to see if the list movies is created 
                 //System.out.println(movies);
+                logger.info(">>>>" + posterPath);
             }
         }
         return movieList;
@@ -223,18 +326,18 @@ public class Movies implements Serializable {
             String releaseYear = releaseDateArr[0];
             String posterPath = jo.getString("poster_path");
             float rating = jo.getJsonNumber("vote_average").bigDecimalValue().floatValue();
-            int scale = (int) Math.pow(10, 1);
             String ratingColour = "";
+            int scale = (int) Math.pow(10, 1);
             rating = (float) Math.round(rating * scale) / scale;
-                if(rating >= 7.5) {
-                    ratingColour = "green";
-                } 
-                else if(rating >= 5) {
-                    ratingColour = "orange";
-                }
-                else {
-                    ratingColour = "red";
-                }
+            if(rating >= 7.5) {
+                ratingColour = "green";
+            } 
+            else if(rating >= 5) {
+                ratingColour = "orange";
+            }
+            else {
+                ratingColour = "red";
+            }
             String runtime = jo.getJsonNumber("runtime").toString();
             String status = jo.getString("status");
             String link = jo.getString("homepage");

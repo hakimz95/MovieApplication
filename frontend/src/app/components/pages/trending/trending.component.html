@@ -1,0 +1,22 @@
+<div class="container" style="padding-top: 25px;">
+<p class="h2" style="color:#000">Trending Movies</p>
+
+<!--Cards Display-->
+<div class="row row-cols-1 row-cols-md-5 g-20">
+    <ng-container *ngFor="let m of movie">
+        <div class="card" [routerLink]="['/detail',m.id]">
+            <img class="card-img-top" src="{{m.posterPath}}">
+            <div class="card-body">
+                <div class="movie-info">
+                    <h5 class="card-title">{{ m.title }}</h5>
+                    <span class={{m.ratingColour}}>{{ m.rating }}</span>
+                </div>
+                <div class="movie-overview">
+                    <p class="h5" style="font-weight: bold;">Overview</p>
+                    <p class="card-text">{{ m.overview }}</p>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+</div>

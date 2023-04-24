@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PopularComponent } from './components/popular.component';
-import { TopRatedComponent } from './components/top-rated.component';
-import { TrendingComponent } from './components/trending.component';
-import { SearchComponent } from './components/search.component';
-import { DetailComponent } from './components/detail.component';
+import { PopularComponent } from './components/pages/popular/popular.component';
+import { TopRatedComponent } from './components/pages/top-rated/top-rated.component';
+import { TrendingComponent } from './components/pages/trending/trending.component';
+import { SearchComponent } from './components/pages/search/search.component';
+import { DetailComponent } from './components/pages/detail/detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { WatchlistComponent } from './components/watchlist.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TopRatedComponent,
     TrendingComponent,
     SearchComponent,
-    DetailComponent
+    DetailComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

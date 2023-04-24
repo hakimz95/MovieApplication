@@ -23,7 +23,7 @@ public class SearchMovieRestController {
     @GetMapping("/api/search")
     public List<Movies> searchMovieAPI(Model model,@RequestParam(required = true) String query) {
         String queryString = query;
-        System.out.println("Query String: " + queryString);
+        System.out.println("Rest Query String: " + queryString);
 
         Optional<List<Movies>> optSearchMovies = movieService.getSearchMovie(queryString);
         List<Movies> searchMoviesList = optSearchMovies.get();

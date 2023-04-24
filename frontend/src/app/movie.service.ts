@@ -10,6 +10,8 @@ export class MovieService {
 
   private apiURL = environment.apiUrl
 
+  movie: any = []
+
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -32,8 +34,13 @@ export class MovieService {
   //Search | Query
   getSearch(query: string): Observable<any> {
     const params = new HttpParams().set("query", query)
-    console.log(query)
+    console.log("Search Query >>>", query)
     return this.httpClient.get(`${this.apiURL}/search`, {params})
+  }
+
+  //Movie Details |
+  getDetails(data: any): Observable<any> {
+    return this.httpClient.get(`${this.apiURL}/detail/${data}`)
   }
   
 }
