@@ -5,13 +5,15 @@ import { TopRatedComponent } from './components/pages/top-rated/top-rated.compon
 import { TrendingComponent } from './components/pages/trending/trending.component';
 import { DetailComponent } from './components/pages/detail/detail.component';
 import { SearchComponent } from './components/pages/search/search.component';
+import { WatchlistComponent } from './components/pages/watchlist/watchlist.component';
 
 const routes: Routes = [
   { path: 'detail/:id', component: DetailComponent },
   { path: 'search', component: SearchComponent },
   { path: 'popular', component: PopularComponent },
   { path: 'trending', component: TrendingComponent},
-  { path: 'topRated', component: TopRatedComponent }
+  { path: 'topRated', component: TopRatedComponent },
+  { path: 'watchlist', component: WatchlistComponent}
 ];
 
 @NgModule({
